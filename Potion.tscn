@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt72b427b4w6f"]
+
+[ext_resource type="Script" path="res://Potion.gd" id="1_76ja3"]
+[ext_resource type="Texture2D" uid="uid://drbsofd5tf0i1" path="res://potion_1_bottle.png" id="1_rmnec"]
+[ext_resource type="Texture2D" uid="uid://f5s7bjfh1bwk" path="res://potion_1_color.png" id="2_kils2"]
+[ext_resource type="Texture2D" uid="uid://oc21wbya34vq" path="res://Potion_shadow.png" id="2_xpyug"]
+[ext_resource type="Texture2D" uid="uid://doo2sktislxd2" path="res://potion_1_shade.png" id="3_j3bnj"]
+[ext_resource type="Texture2D" uid="uid://x2sp7h5bag07" path="res://potion_1_outline.png" id="5_wxf5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhgs7"]
+size = Vector2(28, 32)
+
+[node name="Potion" type="Area2D"]
+script = ExtResource("1_76ja3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lhgs7")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(0, 15)
+texture = ExtResource("2_xpyug")
+
+[node name="Bottle" type="Sprite2D" parent="."]
+texture = ExtResource("1_rmnec")
+
+[node name="Color" type="Sprite2D" parent="."]
+texture = ExtResource("2_kils2")
+
+[node name="Shade" type="Sprite2D" parent="."]
+texture = ExtResource("3_j3bnj")
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_wxf5n")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
