@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs4alih2k3y72"]
+[gd_scene load_steps=5 format=3 uid="uid://cs4alih2k3y72"]
 
+[ext_resource type="PackedScene" uid="uid://dt72b427b4w6f" path="res://Potion.tscn" id="1_u5mf1"]
 [ext_resource type="PackedScene" uid="uid://cwmox67hd2gjv" path="res://dispenser.tscn" id="2_6okbr"]
 [ext_resource type="PackedScene" uid="uid://do1x6juovavkh" path="res://target_color.tscn" id="3_4p0ln"]
 [ext_resource type="PackedScene" uid="uid://cd30yl21j6rt1" path="res://obscuration.tscn" id="4_pfyjg"]
@@ -30,3 +31,6 @@ position = Vector2(383, 92)
 
 [node name="obscuration" parent="." instance=ExtResource("4_pfyjg")]
 position = Vector2(383, 92)
+
+[node name="Potion" parent="." instance=ExtResource("1_u5mf1")]
+position = Vector2(205, 197)

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GameJam_PirateSoftware_15"
-run/main_scene="res://level.tscn"
+run/main_scene="res://Level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+autoloader="*res://autoloader.gd"
 
 [display]
 

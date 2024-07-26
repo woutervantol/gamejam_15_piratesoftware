@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs4alih2k3y72"]
+[gd_scene load_steps=5 format=3 uid="uid://cs4alih2k3y72"]
 
+[ext_resource type="PackedScene" uid="uid://dt72b427b4w6f" path="res://Potion.tscn" id="1_u5mf1"]
 [ext_resource type="PackedScene" uid="uid://cwmox67hd2gjv" path="res://dispenser.tscn" id="2_6okbr"]
 [ext_resource type="PackedScene" uid="uid://do1x6juovavkh" path="res://target_color.tscn" id="3_4p0ln"]
 [ext_resource type="PackedScene" uid="uid://cd30yl21j6rt1" path="res://obscuration.tscn" id="4_pfyjg"]
@@ -12,6 +13,21 @@ offset_right = 582.0
 offset_bottom = 330.0
 mouse_filter = 2
 color = Color(0.247059, 0.172549, 0.0901961, 0.513726)
+
+[node name="Potion" parent="." instance=ExtResource("1_u5mf1")]
+position = Vector2(224, 236)
+
+[node name="Potion2" parent="." instance=ExtResource("1_u5mf1")]
+position = Vector2(311, 258)
+
+[node name="Potion3" parent="." instance=ExtResource("1_u5mf1")]
+position = Vector2(304, 172)
+
+[node name="Potion4" parent="." instance=ExtResource("1_u5mf1")]
+position = Vector2(357, 212)
+
+[node name="Potion5" parent="." instance=ExtResource("1_u5mf1")]
+position = Vector2(370, 277)
 
 [node name="Dispenser" parent="." instance=ExtResource("2_6okbr")]
 position = Vector2(41, 52)

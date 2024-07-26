@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvd6628kwegfu"]
+
+[ext_resource type="Texture2D" uid="uid://bw3s768mwysnn" path="res://cloud_0001.png" id="1_kufof"]
+[ext_resource type="Texture2D" uid="uid://cms2ld5m8nvv7" path="res://cloud_0002.png" id="2_apufq"]
+[ext_resource type="Texture2D" uid="uid://bfits0f7bnab8" path="res://cloud_0003.png" id="3_kmhxl"]
+[ext_resource type="Script" path="res://cloud.gd" id="4_nfmmt"]
+
+[sub_resource type="Gradient" id="Gradient_tyq0m"]
+offsets = PackedFloat32Array(0, 0.139344, 0.647541, 1)
+colors = PackedColorArray(1, 1, 1, 0.185246, 1, 1, 1, 1, 1, 1, 1, 0.926229, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q6hff"]
+gradient = SubResource("Gradient_tyq0m")
+
+[sub_resource type="Curve" id="Curve_k03rb"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.52, 1.18681), 0.437843, 0.437843, 0, 0, Vector2(1, 1.26374), -0.0784929, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wf811"]
+curve = SubResource("Curve_k03rb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pea4j"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(3, 3, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_wf811")
+color_ramp = SubResource("GradientTexture1D_q6hff")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_fukvb"]
+frames = 3
+pause = true
+frame_0/texture = ExtResource("1_kufof")
+frame_1/texture = ExtResource("2_apufq")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_kmhxl")
+frame_2/duration = 1.0
+
+[node name="Cloud" type="Node2D"]
+script = ExtResource("4_nfmmt")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 1
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_pea4j")
+texture = SubResource("AnimatedTexture_fukvb")
+lifetime = 5.0
+local_coords = true

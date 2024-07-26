@@ -28,9 +28,17 @@ func _process(delta):
 			$Shadow.position.y = 15
 			global_position.y += 10
 			dragging = false
+			var selected
 			if get_overlapping_areas():
-				get_overlapping_areas()[get_closest_overlap()].merge(color)
+				selected = get_overlapping_areas()[get_closest_overlap()]
+			if selected:
+				if selected.name == "obscuration":
+					autoloader.emit_signal("submit", color)
+				else:
+					selected.merge(color)
 				queue_free()
+				mouse_over = false
+				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 		else:
 			global_position = get_global_mouse_position()
 
@@ -50,6 +58,31 @@ func get_closest_overlap():
 func merge(other_color):
 	color = (color * nr_merges + other_color).normalized()
 	$Color.modulate = Color(color[0], color[1], color[2])
+	nr_merges += 1
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.1)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.1)
+	#scale += Vector2(0.05, 0.05)
+	if nr_merges == 3:
+		$Bottle.texture = load("res://potion_4_bottle.png")
+		$Color.texture = load("res://potion_4_color.png")
+		$Shade.texture = load("res://potion_4_shade.png")
+		$Outline.texture = load("res://potion_4_outline.png")
+	elif nr_merges == 5:
+		$Bottle.texture = load("res://potion_3_bottle.png")
+		$Color.texture = load("res://potion_3_color.png")
+		$Shade.texture = load("res://potion_3_shade.png")
+		$Outline.texture = load("res://potion_3_outline.png")
+	elif nr_merges == 8:
+		$Bottle.texture = load("res://potion_2_bottle.png")
+		$Color.texture = load("res://potion_2_color.png")
+		$Shade.texture = load("res://potion_2_shade.png")
+		$Outline.texture = load("res://potion_2_outline.png")
+	elif nr_merges == 12:
+		$Bottle.texture = load("res://potion_1_bottle.png")
+		$Color.texture = load("res://potion_1_color.png")
+		$Shade.texture = load("res://potion_1_shade.png")
+		$Outline.texture = load("res://potion_1_outline.png")
  
 func _on_mouse_entered():
 	mouse_over = true

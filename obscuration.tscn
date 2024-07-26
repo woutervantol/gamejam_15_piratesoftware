@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd30yl21j6rt1"]
+
+[ext_resource type="Script" path="res://obscuration.gd" id="1_ji3k6"]
+[ext_resource type="Texture2D" uid="uid://mx5igvvwyrje" path="res://Gap.png" id="2_ddtaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfqqi"]
+size = Vector2(64, 64)
+
+[node name="obscuration" type="Area2D"]
+script = ExtResource("1_ji3k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sfqqi")
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+texture = ExtResource("2_ddtaj")
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
